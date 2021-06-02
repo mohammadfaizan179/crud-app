@@ -19,9 +19,8 @@ const Navbar = () => {
         <>
             <AppBar position="static">
                 <Toolbar>
-                    {/* <Typography>CRUD Application</Typography> */}
-                    <NavLink className={classes.navLinks} to="./">CRUD Application</NavLink>
-                    <NavLink className={classes.navLinks} to="/allusers">ALl Users</NavLink>
+                    <NavLink className={classes.navLinks} to="./">CRUD APP</NavLink>
+                    <NavLink className={classes.navLinks} to="/allusers">All Users</NavLink>
                     <NavLink className={classes.navLinks} to="/addusers">Add User</NavLink>
                 </Toolbar>
             </AppBar>
