@@ -3,10 +3,7 @@ import {FormGroup, FormControl, InputLabel, Input, Button, makeStyles, Typograph
 import {addUsers} from "../Services/api";
 import {useHistory} from "react-router-dom";
 import "./AddUsers.css";
-
-const useStyles = makeStyles((theme)=>({
-    
-}))
+import AddIcon from '@material-ui/icons/Add';
 
 const initailValues = {
     name: "",
@@ -18,7 +15,6 @@ const initailValues = {
 const AddUser = () => {
     const [users, setUsers] = useState(initailValues)
     const {name, username, email, phone} = users;
-    const classes = useStyles();
     const history = useHistory();
 
     const handleChange = (e) =>{
@@ -51,8 +47,8 @@ const AddUser = () => {
                     <Input value={phone} name="phone" onChange={(e)=>handleChange(e)}/>
                </FormControl>
                 <br /> 
-                <Button onClick={()=>addUserDetails()} variant="contained" color="primary">Add User</Button>
             </FormGroup>
+                <Button onClick={()=>addUserDetails()} variant="contained" color="primary"><AddIcon /></Button>
             </div>
         </>
     )

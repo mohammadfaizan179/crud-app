@@ -1,9 +1,13 @@
 import React,{useEffect, useState} from 'react'
 import {allUsers} from "../Services/api";
-import {TableContainer , Table, TableHead,TableCell,Button, TableRow, TableBody, makeStyles, Paper, Hidden, Box} from "@material-ui/core";
+import {TableContainer , Table, TableHead,TableCell,Button, TableRow, TableBody, makeStyles, Paper, Hidden, Box, Dialog, DialogTitle} from "@material-ui/core";
 import {Link} from "react-router-dom";
 import {deleteUser} from "../Services/api";
 import "./AllUsers.css";
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import Popup from "./Popup";
 
 const useStyles = makeStyles((theme)=>({
     allUsersWraper:{
@@ -31,8 +35,12 @@ const useStyles = makeStyles((theme)=>({
             fontSize: "16px",
             // border: "2px solid black",
         }
+    },
+    tableButtons:{
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
     }
-
 }))
 
 const titles = ["Id, Name, User Name, Email, Phone"];
@@ -40,6 +48,8 @@ const titles = ["Id, Name, User Name, Email, Phone"];
 const AllUsers = () => {
 const [users, setUsers] = useState([]);
 const classes = useStyles();
+const [openPopup, setOpenPopup] = useState(false)
+const [userId, setUserId] = useState(null);
 
 const getAllUsers = async() =>{
     const allUsersResponse = await allUsers();
@@ -54,6 +64,15 @@ const deleteUserData = async(id) =>{
     await deleteUser(id);
     getAllUsers();
 }
+
+const handleOpenDialog = (id) =>{
+    setOpenPopup(true);
+    setUserId(id);
+}
+const handleCloseDialog = () => {
+    setOpenPopup(false);
+};
+
 return (
     <>
         <Hidden smDown>
@@ -67,7 +86,7 @@ return (
                     <TableCell>UserName</TableCell>
                     <TableCell>Email</TableCell>
                     <TableCell>Phone</TableCell>
-                    <TableCell></TableCell>
+                    <TableCell>Actions</TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -80,8 +99,13 @@ return (
                             <TableCell>{user.email}</TableCell>
                             <TableCell>{user.phone}</TableCell>
                             <TableCell>
-                                <Button variant="contained" color="primary" component={Link} to={`/edit/${user.id}`} style={{margin: "8px"}}>Edit</Button>
-                                <Button variant="contained" color="secondary" onClick={()=> deleteUserData(user.id)}>Delete</Button>
+                            <Box className={classes.tableButtons}>
+                                <Button variant="contained" color="primary" onClick={()=> handleOpenDialog(user.id)} ><VisibilityIcon/></Button>
+                                <Button variant="contained" color="primary" component={Link} to={`/edit/${user.id}`} style={{margin: "8px"}}><EditIcon/></Button>
+                                <Button variant="contained" color="secondary" onClick={()=> deleteUserData(user.id)}><DeleteIcon /></Button>
+                                
+                            </Box>
+                                
                             </TableCell>
                         </TableRow>
                     ))  
@@ -90,7 +114,14 @@ return (
         </Table>
         </TableContainer>
         </div>
-        </Hidden>
+        </Hidden> 
+        <Popup
+            handleCloseDialog = {handleCloseDialog}
+            users = {users}
+            userId = {userId} 
+            openPopup = {openPopup}
+            setOpenPopup = {setOpenPopup}
+        />   
         {/* -------------------------------------------------------- */}
         <Hidden mdUp>
         <TableContainer>
@@ -125,8 +156,9 @@ return (
                         </div>
                         <div className="tableButtonsResWraper">
                             <TableRow className="tableButtonsRes">
-                                <Button variant="contained" color="primary" component={Link} to={`/edit/${user.id}`} style={{margin: "8px"}}>Edit</Button>
-                                <Button variant="contained" color="secondary" onClick={()=> deleteUserData(user.id)}>Delete</Button>
+                                <Button variant="contained" color="primary" onClick={()=> handleOpenDialog(user.id)} ><VisibilityIcon/></Button>           
+                                <Button variant="contained" color="primary" component={Link} to={`/edit/${user.id}`} style={{margin: "8px"}}><EditIcon/></Button>
+                                <Button variant="contained" color="secondary" onClick={()=> deleteUserData(user.id)}><DeleteIcon/></Button>
                             </TableRow>
                         </div>
                     </>

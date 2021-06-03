@@ -3,6 +3,7 @@ import {FormGroup, FormControl, InputLabel, Box, Input, Button, makeStyles, Typo
 import {editUsers, allUsers} from "../Services/api";
 import {useHistory, useParams} from "react-router-dom";
 import "./EditUser.css";
+import AddIcon from '@material-ui/icons/Add';
 
 const initailValues = {
     name: "",
@@ -34,8 +35,8 @@ const EditUser = () => {
     },[])
     return (
         <>
-            <div className="addUserWraper">
-            <FormGroup className="addUser">
+            <div className="editUserWraper">
+            <FormGroup className="editUser">
                 <Typography variant="h4">Edit User</Typography>
                 
                 <FormControl>
@@ -55,8 +56,8 @@ const EditUser = () => {
                     <Input value={phone} name="phone" onChange={(e)=>handleChange(e)}/>
                </FormControl>
                 <br />
-                <Button onClick={()=>editUserDetails()} variant="contained" color="primary">Edit User</Button>
             </FormGroup>
+                <Button onClick={()=>editUserDetails()} variant="contained" color="primary"><AddIcon /></Button>
             </div>
         </>
     )
