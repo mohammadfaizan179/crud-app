@@ -1,38 +1,42 @@
-import React,{useState} from 'react'
-import {FormGroup, FormControl, InputLabel, Input, Button, makeStyles, Typography} from "@material-ui/core";
-import {addUsers} from "../Services/api";
-import {useHistory} from "react-router-dom";
-import "./AddUsers.css";
-
-const useStyles = makeStyles((theme)=>({
-    
-}))
+import React,{useState, useEffect} from 'react'
+import {FormGroup, FormControl, InputLabel, Box, Input, Button, makeStyles, Typography} from "@material-ui/core";
+import {editUsers, allUsers} from "../Services/api";
+import {useHistory, useParams} from "react-router-dom";
+import "./EditUser.css";
 
 const initailValues = {
     name: "",
     username: "",
     email: "",
-    // id: "",
     phone: "",
 }
-const AddUser = () => {
+const EditUser = () => {
     const [users, setUsers] = useState(initailValues)
     const {name, username, email, phone} = users;
-    const classes = useStyles();
+    const {id} = useParams();
     const history = useHistory();
-
+    
     const handleChange = (e) =>{
         setUsers({...users, [e.target.name]: e.target.value});
     }
-    const addUserDetails = async() =>{
-        await addUsers(users);
+    const editUserDetails = async() =>{
+        await editUsers(id, users);
+        history.push("");
         history.push("./all");
     }
+
+    const loadAllUsers = async() =>{
+        const response = await allUsers(id);
+        setUsers(response.data)
+    }
+    useEffect(()=>{
+        loadAllUsers();
+    },[])
     return (
         <>
             <div className="addUserWraper">
             <FormGroup className="addUser">
-                <Typography variant="h4">Add User</Typography>
+                <Typography variant="h4">Edit User</Typography>
                 
                 <FormControl>
                     <InputLabel>Name</InputLabel>
@@ -50,12 +54,12 @@ const AddUser = () => {
                     <InputLabel>Phone</InputLabel>
                     <Input value={phone} name="phone" onChange={(e)=>handleChange(e)}/>
                </FormControl>
-                <br /> 
-                <Button onClick={()=>addUserDetails()} variant="contained" color="primary">Add User</Button>
+                <br />
+                <Button onClick={()=>editUserDetails()} variant="contained" color="primary">Edit User</Button>
             </FormGroup>
             </div>
         </>
     )
 }
 
-export default AddUser
+export default EditUser

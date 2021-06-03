@@ -1,0 +1,13 @@
+Dependencies
+    npm i @material-ui/core
+    npm i @material-ui/icons
+    npm i axios
+    npm i cocurrently
+    npm i json-server
+    npm i rect-router-dom
+
+Learn New Things:
+    Custom Hook
+    History hook (useHistory)
+    useParams
+    Dynamic Routing

@@ -1,10 +1,18 @@
 {
-    "users": [
-        {
-            "name": "Rohit Sharma",
-            "username": "Hitman",
-            "email": "sharma@gmail.com",
-            "id": 1
-        }
-    ]
+  "users": [
+    {
+      "name": "Abdul Rauf",
+      "username": "rauf",
+      "email": "rauf@gmail.com",
+      "phone": "03135699845",
+      "id": 2
+    },
+    {
+      "name": "Muhammad Faizan",
+      "username": "fazi",
+      "email": "mohammadfaizan.be17@iba-suk.edu.pk",
+      "phone": "03135399179",
+      "id": 3
+    }
+  ]
 }

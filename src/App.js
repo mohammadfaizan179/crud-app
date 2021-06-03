@@ -3,6 +3,8 @@ import Home from "./Component/Home";
 import AllUsers from "./Component/AllUsers";
 import AddUser from "./Component/AddUser";
 import NotFound from "./Component/NotFound";
+import EditUser from "./Component/EditUser";
+
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 function App() {
@@ -12,9 +14,11 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route exact path="/allusers" component={AllUsers}/>
-          <Route exact path="/addusers" component={AddUser}/>
+          <Route exact path="/all" component={AllUsers}/>
+          <Route exact path="/add" component={AddUser}/>
+          <Route exact path="/edit/:id" component={EditUser}/>
           <Route component={NotFound} />
+
         </Switch>
       </BrowserRouter>
     </>
