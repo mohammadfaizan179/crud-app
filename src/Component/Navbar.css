@@ -11,3 +11,9 @@ body{
     color: blueviolet;
     font-family: 'Sorts Mill Goudy', serif;
 }
+.portfolio_link{
+    color: #000000;
+}
+.portfolio_link:hover{
+    color: #daa520;
+}

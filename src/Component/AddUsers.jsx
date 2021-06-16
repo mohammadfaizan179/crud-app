@@ -1,8 +1,9 @@
-import React,{useState, useEffect} from 'react'
-import {FormGroup, FormControl, InputLabel, Box, Input, Button, makeStyles, Typography} from "@material-ui/core";
-import {editUsers, allUsers} from "../Services/api";
-import {useHistory, useParams} from "react-router-dom";
-import "./EditUser.css";
+import React,{useState} from 'react'
+import AddUser from "./AddUser";
+import {FormGroup, FormControl, InputLabel, TextField, Input, Button, makeStyles, Typography} from "@material-ui/core";
+import {addUsers} from "../Services/api";
+import {useHistory} from "react-router-dom";
+import "./AddUsers.css";
 import AddIcon from '@material-ui/icons/Add';
 import {useForm} from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -17,63 +18,49 @@ const schema = yup.object().shape({
 
 const initailValues = {
     name: "",
-    username: "",
+    username: "", 
     email: "",
     phone: "",
+    // id: "",
 }
-const EditUser = () => {
+
+
+const AddUsers = () => {
     const [users, setUsers] = useState(initailValues)
     const {name, username, email, phone} = users;
-    const {id} = useParams();
     const history = useHistory();
-    
     const { register, handleSubmit, formState: { errors }} = useForm({
         resolver: yupResolver(schema),
     });
-
+    
     const handleChange = (e) =>{
         setUsers({...users, [e.target.name]: e.target.value});
     }
-    const editUserDetails = async() =>{
-        // await editUsers(id, users);
-        // history.push("");
-        // history.push("./all");
-    }
-
-    const loadAllUsers = async() =>{
-        const response = await allUsers(id);
-        setUsers(response.data)
-    }
-    useEffect(()=>{
-        loadAllUsers();
-    },[])
 
     const onSubmit = async() => {
-        alert("edited")
-        await editUsers(id, users);
-        history.push("");
+        await addUsers(users);
         history.push("./all");
     }
 
+    
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="editUserWraper">
-            <FormGroup className="editUser">
-                <Typography variant="h4">Edit User</Typography>
-                
+            <div className="addUserWraper">
+            <FormGroup className="addUser">
+                <Typography variant="h4">Add User</Typography>      
                 <FormControl>
                     <InputLabel>Name</InputLabel>
-                    <Input 
+                    <Input  
                         value={name} 
                         name="name" 
                         {...register("name", {
                             required: "Required",
                         })}
-                        onChange={(e)=>handleChange(e)}
+                        onChange={(e)=>handleChange(e)}    
                     /> 
                     <span>{errors.name?.message}</span>
-               </FormControl>
+                </FormControl>
                 <FormControl>
                     <InputLabel>UserName</InputLabel>
                     <Input 
@@ -85,7 +72,7 @@ const EditUser = () => {
                         onChange={(e)=>handleChange(e)}
                     />
                     <span>{errors.username?.message}</span>
-               </FormControl>
+                </FormControl>
                 <FormControl>
                     <InputLabel>Email</InputLabel>
                     <Input 
@@ -97,26 +84,28 @@ const EditUser = () => {
                         onChange={(e)=>handleChange(e)}
                     />
                     <span>{errors.email?.message}</span>
+            
                </FormControl>
                 <FormControl>
                     <InputLabel>Phone</InputLabel>
                     <Input 
                         value={phone} 
-                        name="phone"
+                        name="phone" 
                         {...register("phone", {
                             required: "Required",
-                        })} 
+                        })}
                         onChange={(e)=>handleChange(e)}
+                        helperText="Hi"
                     />
                     <span>{errors.phone?.message}</span>
-               </FormControl>
-                <br />
+               </FormControl>     
+                <br /> 
             </FormGroup>
-            <Button type="submit" variant="contained" color="primary"><AddIcon /></Button>
+            <Button type="submit" variant="contained" color="primary"><AddIcon /></Button>    
             </div>
             </form>
         </>
     )
 }
 
-export default EditUser
+export default AddUsers

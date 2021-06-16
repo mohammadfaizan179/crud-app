@@ -122,7 +122,7 @@ return (
             openPopup = {openPopup}
             setOpenPopup = {setOpenPopup}
         />   
-        {/* -------------------------------------------------------- */}
+        {/* --------------------- Small Screen Table ----------------------------------- */}
         <Hidden mdUp>
         <TableContainer>
         <Table >
@@ -144,14 +144,18 @@ return (
                                 <TableCell>UserName</TableCell>
                                 <TableCell>{user.username}</TableCell>
                             </TableRow>
+                            
                             <TableRow className="tHeadRes">
                                 <TableCell>Email</TableCell>
                                 <TableCell>{user.email}</TableCell>
                             </TableRow>
+                        
+                            
                             <TableRow className="tHeadRes">
                                 <TableCell>Phone</TableCell>
                                 <TableCell>{user.phone}</TableCell>
                             </TableRow>
+                            
                             </Box>
                         </div>
                         <div className="tableButtonsResWraper">
