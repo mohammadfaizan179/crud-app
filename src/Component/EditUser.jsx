@@ -34,11 +34,6 @@ const EditUser = () => {
     const handleChange = (e) =>{
         setUsers({...users, [e.target.name]: e.target.value});
     }
-    const editUserDetails = async() =>{
-        // await editUsers(id, users);
-        // history.push("");
-        // history.push("./all");
-    }
 
     const loadAllUsers = async() =>{
         const response = await allUsers(id);
@@ -49,7 +44,6 @@ const EditUser = () => {
     },[])
 
     const onSubmit = async() => {
-        alert("edited")
         await editUsers(id, users);
         history.push("");
         history.push("./all");

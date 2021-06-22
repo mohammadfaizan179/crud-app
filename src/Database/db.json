@@ -1,18 +1,25 @@
 {
   "users": [
     {
-      "name": "Abdul Rauf",
-      "username": "rauf",
-      "email": "rauf@gmail.com",
-      "phone": "",
-      "id": 2
-    },
-    {
       "name": "Muhammad Faizan",
       "username": "faziii",
       "email": "mohammadfaizan.be17@iba-suk.edu.pk",
       "phone": "03135399179",
       "id": 3
+    },
+    {
+      "name": "Attiq-ur-Rehman",
+      "username": "atiq123",
+      "email": "atiq123@gmail.com",
+      "phone": "03135399179",
+      "id": 4
+    },
+    {
+      "name": "Shahbaz",
+      "username": "shah",
+      "email": "malik@gmail.com",
+      "phone": "02135366854",
+      "id": 5
     }
   ]
 }
