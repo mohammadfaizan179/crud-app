@@ -8,11 +8,18 @@
       "id": 4
     },
     {
-      "name": "Shahbaz",
-      "username": "shah",
-      "email": "malik@gmail.com",
-      "phone": "02135366854",
+      "name": "Muhammad Faizan",
+      "username": "fazi",
+      "email": "fazi@gmail.com",
+      "phone": "03135399179",
       "id": 5
+    },
+    {
+      "name": "Shaaf ",
+      "username": "Elahee",
+      "email": "shaf@gmail.com",
+      "phone": "45698745632",
+      "id": 6
     }
   ]
 }
