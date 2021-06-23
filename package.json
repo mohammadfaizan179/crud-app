@@ -1,7 +1,6 @@
 {
   "name": "crud-app",
-  "homepage": "https://mohammadfaizan179.github.io/crud-app" ,
-
+  "homepage": "https://mohammadfaizan179.github.io/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -25,9 +24,9 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
     "json-server": "json-server --watch src/Database/db.json --host 127.0.0.1 --port 3003",
     "dev": "concurrently \"npm start\" \"npm run json-server\" ",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
