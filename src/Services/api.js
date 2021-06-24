@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const url = "http://localhost:3003/users";
+// const url = "http://localhost:3003/users";
+const url = "https://my-json-server.typicode.com/mohammadfaizan179/crud-server";
 
 export const allUsers  = async (id) =>{
     id = id || "";
