@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const url = "http://localhost:3003/users";
-// const url = "https://my-json-server.typicode.com/mohammadfaizan179/crud-server/users";
+// const url = "http://localhost:3003/users";
+const url = "https://my-json-server.typicode.com/mohammadfaizan179/crud-server/users";
 export const allUsers  = async (id) =>{
     id = id || "";
     return await axios.get(`${url}/${id}`);
