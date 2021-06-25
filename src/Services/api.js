@@ -7,8 +7,6 @@ export const allUsers  = async (id) =>{
     return await axios.get(`${url}/${id}`);
 }
 export const addUsers  = async(user) =>{
-    // console.log("addUsers Called inside api")
-    // console.log(user);
     return await axios.post(url,user);
 }
 export const editUsers  = async(id, user) =>{
