@@ -103,9 +103,7 @@ return (
                                 <Button variant="contained" color="primary" onClick={()=> handleOpenDialog(user.id)} ><VisibilityIcon/></Button>
                                 <Button variant="contained" color="primary" component={Link} to={`/edit/${user.id}`} style={{margin: "8px"}}><EditIcon/></Button>
                                 <Button variant="contained" color="secondary" onClick={()=> deleteUserData(user.id)}><DeleteIcon /></Button>
-                                
                             </Box>
-                                
                             </TableCell>
                         </TableRow>
                     ))  

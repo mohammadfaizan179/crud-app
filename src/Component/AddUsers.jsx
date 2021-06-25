@@ -38,7 +38,8 @@ const AddUsers = () => {
     }
 
     const onSubmit = async() => {
-        console.log(users);
+        // console.log("onSubmit Called");
+        // console.log(users);
         await addUsers(users);
         history.push("./all");
     }
